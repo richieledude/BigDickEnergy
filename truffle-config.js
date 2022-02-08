@@ -44,13 +44,29 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
-     development: {
+    development: {
       host: "127.0.0.1",     // Localhost (default: none)
       port: 8545,            // Standard Ethereum port (default: none)
       network_id: "*",       // Any network (default: none)
+      },
+
+    xdai: {
+      provider: function() {
+            return new HDWalletProvider(
+           process.env.MNEMONIC,
+           "https://rpc.gnosischain.com")
+      },
+      network_id: 100,
+      gas: 500000,
+      gasPrice: 1000000000
+      },
+
+    goerli: {
+      provider: () => new HDWalletProvider(mnemonic, `http://localhost:8545`),
+      network_id: 5,   // This network is yours, in the cloud.
      },
 
-     ganache: {
+    ganache: {
       provider: () => new HDWalletProvider(mnemonic, `http://localhost:7545`),
       network_id: 5777,   // This network is yours, in the cloud.
       //production: true    // Treats this network as if it was a public net. (default: false)
@@ -103,6 +119,14 @@ module.exports = {
       // }
     }
   },
+
+  plugins: [
+    'truffle-plugin-verify'
+  ],
+  api_keys: {
+    etherscan: process.env.ETHERSCAN_API_KEY
+  }
+
 
   // Truffle DB is currently disabled by default; to enable it, change enabled:
   // false to enabled: true. The default storage location can also be
