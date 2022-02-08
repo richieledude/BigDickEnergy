@@ -20,11 +20,16 @@
 
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
+
+
+
 // const mnemonic = process.env.MNEMONIC;
 const privkey = process.env.MEHPRIVKEY
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
+
+
 
 module.exports = {
   /**
@@ -51,12 +56,10 @@ module.exports = {
       },
 
     xdai: {
-      provider: function() {
-            return new HDWalletProvider(privkey,"https://rpc.gnosischain.com")
-      },
+      provider: () => new HDWalletProvider(privkey, `https://rpc.gnosischain.com/`),
       network_id: 100,
       gas: 30000000,
-      gasPrice: 5000000000
+      gasPrice: 10000000000
       },
 
     goerli: {
@@ -119,8 +122,9 @@ module.exports = {
   },
 
   plugins: [
-    'truffle-plugin-verify'
+    'truffle-plugin-verify',
   ],
+
   api_keys: {
     etherscan: process.env.ETHERSCAN_API_KEY
   }
