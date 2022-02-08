@@ -51,9 +51,9 @@ module.exports = {
      },
 
      ganache: {
-      provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
+      provider: () => new HDWalletProvider(mnemonic, `http://localhost:7545`),
       network_id: 5777,   // This network is yours, in the cloud.
-      production: true    // Treats this network as if it was a public net. (default: false)
+      //production: true    // Treats this network as if it was a public net. (default: false)
      }
 
 
