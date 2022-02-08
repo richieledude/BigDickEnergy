@@ -55,7 +55,7 @@ module.exports = {
             return new HDWalletProvider(privkey,"https://rpc.gnosischain.com")
       },
       network_id: 100,
-      gas: 4000000,
+      gas: 30000000,
       gasPrice: 5000000000
       },
 
