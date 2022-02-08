@@ -18,10 +18,10 @@
  *
  */
 
- const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 
- const mnemonic = process.env.MNEMONIC;
-
+// const mnemonic = process.env.MNEMONIC;
+const privkey = process.env.MEHPRIVKEY
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
@@ -52,9 +52,7 @@ module.exports = {
 
     xdai: {
       provider: function() {
-            return new HDWalletProvider(
-           process.env.MNEMONIC,
-           "https://rpc.gnosischain.com")
+            return new HDWalletProvider(privkey,"https://rpc.gnosischain.com")
       },
       network_id: 100,
       gas: 500000,
@@ -62,12 +60,12 @@ module.exports = {
       },
 
     goerli: {
-      provider: () => new HDWalletProvider(mnemonic, `http://localhost:8545`),
+      provider: () => new HDWalletProvider(privkey, `http://localhost:8545`),
       network_id: 5,   // This network is yours, in the cloud.
      },
 
     ganache: {
-      provider: () => new HDWalletProvider(mnemonic, `http://localhost:7545`),
+      provider: () => new HDWalletProvider(privkey, `http://localhost:7545`),
       network_id: 5777,   // This network is yours, in the cloud.
       //production: true    // Treats this network as if it was a public net. (default: false)
      }
