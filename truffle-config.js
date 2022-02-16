@@ -25,10 +25,6 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 // const mnemonic = process.env.MNEMONIC;
 const privkey = process.env.MEHPRIVKEY
-//
-// const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
-
 
 
 module.exports = {
@@ -74,7 +70,7 @@ module.exports = {
      }
 
 
-    // Another network with more advanced options...
+    // Another network with more advanced options...clear
     // advanced: {
     // port: 8777,             // Custom port
     // network_id: 1342,       // Custom network
@@ -123,6 +119,7 @@ module.exports = {
 
   plugins: [
     'truffle-plugin-verify',
+    'truffle-source-verify'
   ],
 
   api_keys: {
